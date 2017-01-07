@@ -1,4 +1,4 @@
-# Redux Simple Universal
+# React Redux Simple Universal
 
 This project template was built with [Create React App](https://github.com/facebookincubator/create-react-app) and aims to add server side rendering on top of existing Create React App functionality.
 
