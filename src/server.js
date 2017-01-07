@@ -1,16 +1,18 @@
 import path from 'path';
-import Express from 'express';
+import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import counterApp from './reducers';
 import App from './containers/App';
+import serveStatic from 'serve-static';
 
-const app = Express();
+const app = express();
 const port = 3000;
 
-app.user(handleRender);
+app.use('/public', serveStatic(path.join(__dirname, '../build/static')));
+app.use(handleRender);
 
 // middleware
 function handleRender(req, res) {
@@ -41,10 +43,12 @@ function renderFullPage(html, preloadedState) {
          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
        </script>
-       <script src="/static/bundle.js"></script>
+       <script src="/public/js/main.a52e9c90.js"></script>
      </body>
    </html>
    `
 }
 
-app.listen(port);
+app.listen(port, function () {
+  console.log('server listening on port 3000!')
+});
