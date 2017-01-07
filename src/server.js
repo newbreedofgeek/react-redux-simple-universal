@@ -43,7 +43,7 @@ function renderFullPage(html, preloadedState) {
          // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
          window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState)}
        </script>
-       <script src="/public/js/main.a52e9c90.js"></script>
+       <script src="/public/js/bundle.js"></script>
      </body>
    </html>
    `
