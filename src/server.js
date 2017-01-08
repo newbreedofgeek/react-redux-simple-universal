@@ -4,7 +4,8 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import counterApp from './reducers';
+// import counterApp from './reducers';
+import rootReducer from './reducers';
 import App from './containers/App';
 import serveStatic from 'serve-static';
 
@@ -16,7 +17,7 @@ app.use(handleRender);
 
 // middleware
 function handleRender(req, res) {
-  const store = createStore(counterApp); // a new redux store
+  const store = createStore(rootReducer); // a new redux store
 
   const html = renderToString(
     <Provider store={store}>

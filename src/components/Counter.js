@@ -2,13 +2,13 @@ import React, { Component, PropTypes } from 'react'
 
 class Counter extends Component {
   static propTypes = {
-    value: PropTypes.number.isRequired,
+    counter: PropTypes.number.isRequired,
     onIncrement: PropTypes.func.isRequired,
     onDecrement: PropTypes.func.isRequired
   }
 
   incrementIfOdd = () => {
-    if (this.props.value % 2 !== 0) {
+    if (this.props.counter % 2 !== 0) {
       this.props.onIncrement()
     }
   }
@@ -18,10 +18,10 @@ class Counter extends Component {
   }
 
   render() {
-    const { value, onIncrement, onDecrement } = this.props
+    const { counter, onIncrement, onDecrement } = this.props
     return (
       <p>
-        Clicked: {value} times
+        Clicked: {counter} times
         {' '}
         <button onClick={onIncrement}>
           +
