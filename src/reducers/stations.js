@@ -24,6 +24,16 @@ const defaultState = {
         "postcode": "2000",
         "state": "NSW"
       }
+    },
+    {
+      "id": 3,
+      "name": "Blacktown",
+      "address": {
+        "street": "No 4, blue Street",
+        "suburb": "Seven Hills",
+        "postcode": "2000",
+        "state": "NSW"
+      }
     }
   ]
 };

@@ -22,10 +22,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "postbuild": "mv build/static/js/main*.js build/static/js/bundle.js",
     "eject": "react-scripts eject",
     "test": "react-scripts test",
-    "server": "node_modules/.bin/babel-node src/server.js --presets es2015,stage-2,react"
+    "builduniversal": "react-scripts build",
+    "postbuilduniversal": "mv build/static/js/main*.js build/static/js/bundle.js",
+    "server": "npm run builduniversal && node_modules/.bin/babel-node src/server.js --presets es2015,stage-2,react"
   },
   "homepage": "./"
 }
