@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import App from './containers/App';
 import serveStatic from 'serve-static';
+import { fetchStations } from './actions/stations';
 
 const app = express();
 const port = 3000;
@@ -18,15 +19,19 @@ app.use(handleRender);
 function handleRender(req, res) {
   const store = createStore(rootReducer); // a new redux store
 
-  const html = renderToString(
-    <Provider store={store}>
-      <App />
-    </Provider>
-  );
+  // get aync data
+  fetchStations(store.dispatch)
+    .then(() => {
+      const html = renderToString(
+        <Provider store={store}>
+          <App />
+        </Provider>
+      );
 
-  const preloadedState = store.getState();
+      const preloadedState = store.getState();
 
-  res.send(renderFullPage(html, preloadedState));
+      res.send(renderFullPage(html, preloadedState));
+    });
 }
 
 function renderFullPage(html, preloadedState) {

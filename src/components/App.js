@@ -3,14 +3,17 @@ import Counter from './Counter';
 import Stations from './Stations';
 
 const AppComponent = (props) => {
+  const { counter, onIncrement, onDecrement, stations, fetchStations } = props;
+
   const counterProps = {
-    counter: props.counter,
-    onIncrement: props.onIncrement,
-    onDecrement: props.onDecrement
+    counter,
+    onIncrement,
+    onDecrement
   }
 
   const stationsProps = {
-    stations: props.stations
+    stations,
+    fetchStations
   }
 
   return (

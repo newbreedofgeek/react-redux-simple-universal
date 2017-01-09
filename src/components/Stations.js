@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const StationsComponent = (props) => (
-  <div>
-    <h2>Example of fetching data via API</h2>
-    <hr />
-    {
-      (props.stations.isFetching)
-      ?
-        <div>Loading.....</div>
-      :
-        <ul>
+class StationsComponent extends Component {
+  componentDidMount() {
+    this.props.fetchStations();
+  }
+
+  render() {
+    return (
+      <div>
+        <h2>Example of fetching data via API</h2>
+        <hr />
         {
-          props.stations.items.map((station, index) => (
-            <li key={index}>{ station.name }</li>
-          ))
+          (this.props.stations.isFetching)
+          ?
+            <div>Loading.....</div>
+          :
+            <ul>
+            {
+              this.props.stations.items.map((station, index) => (
+                <li key={index}>{ station.name }</li>
+              ))
+            }
+            </ul>
         }
-        </ul>
-    }
-    <hr />
-  </div>
-);
+        <hr />
+      </div>
+    )
+  }
+};
 
 export default StationsComponent;

@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(onDecrement())
   ),
   fetchStations: () => {
-    dispatch(fetchStations());
+    fetchStations(dispatch);
   }
 });
 
