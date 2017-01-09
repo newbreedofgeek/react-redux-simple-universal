@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import AppComponent from '../components/App';
+import { onIncrement, onDecrement } from '../actions/counter';
+import { fetchStations } from '../actions/stations';
 
 const mapStateToProps = (state, ownProps) => ({
   counter: state.counter,
@@ -8,15 +10,14 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onIncrement: () => (
-    dispatch({
-      type: 'INCREMENT'
-    })
+    dispatch(onIncrement())
   ),
   onDecrement: () => (
-    dispatch({
-      type: 'DECREMENT'
-    })
-  )
+    dispatch(onDecrement())
+  ),
+  fetchStations: () => {
+    dispatch(fetchStations());
+  }
 });
 
 const AppContainer = connect(

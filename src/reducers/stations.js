@@ -1,9 +1,10 @@
-import * as constants from './constants';
+import * as actions from '../actions/stations';
 
 const defaultState = {
-  isFetching: false,
-  errMsg: null,
-  lastFetched: null,
+  isFetching: false, // flase for a UI loading
+  didInvalidate: false, // for local caching of data
+  errMsg: null, // to show a UI error msg in case there was an error
+  lastFetched: null, // when was data last fetched, use with didInvalidate to maintain a local cache of data
   items: [
     {
       "id": 1,
@@ -40,7 +41,7 @@ const defaultState = {
 
 const stations = (state = defaultState, action) => {
   switch(action.type) {
-    case constants.FETCH_STATIONS_REQUEST: {
+    case actions.FETCH_STATIONS_REQUEST: {
       let update =  {isFetching: true};
 
       state = {
@@ -51,7 +52,7 @@ const stations = (state = defaultState, action) => {
       return state
     }
 
-    case constants.FETCH_STATIONS_FAIL: {
+    case actions.FETCH_STATIONS_FAIL: {
       let update =  {errMsg: action.payload.errMsg};
 
       state = {
@@ -62,7 +63,7 @@ const stations = (state = defaultState, action) => {
       return state
     }
 
-    case constants.FETCH_STATIONS_SUCCESS: {
+    case actions.FETCH_STATIONS_SUCCESS: {
       let update =  {
         lastFetched: +new Date(),
         items: action.payload.items
