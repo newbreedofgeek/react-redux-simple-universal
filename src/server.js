@@ -4,7 +4,6 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// import counterApp from './reducers';
 import rootReducer from './reducers';
 import App from './containers/App';
 import serveStatic from 'serve-static';
@@ -15,7 +14,7 @@ const port = 3000;
 app.use('/public', serveStatic(path.join(__dirname, '../build/static')));
 app.use(handleRender);
 
-// middleware
+// express middleware
 function handleRender(req, res) {
   const store = createStore(rootReducer); // a new redux store
 
